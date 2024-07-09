@@ -18,22 +18,27 @@ num_list	result
 
 class Solution {
     public int[] solution(int[] num_list) {
+        // 새로운 배열 answer를 선언, 길이는 num_list보다 1 더 큼
         int[] answer = new int[num_list.length + 1];
 
-        //마지막 원소
+        // 마지막 원소
         int lastNum = num_list[num_list.length - 1];
-        //마지막 원소의 전 원소
+        // 마지막 원소의 전 원소
         int lastNumBefore = num_list[num_list.length - 2];
 
-        for(int i = 0; i < num_list.length; i++){
+        // num_list의 모든 요소를 answer 배열에 복사
+        for (int i = 0; i < num_list.length; i++) {
             answer[i] = num_list[i];
         }
 
-        if(lastNum > lastNumBefore){
+        // 마지막 원소가 그 전 원소보다 크면 lastNum - lastNumBefore 값을 추가
+        if (lastNum > lastNumBefore) {
             answer[num_list.length] = lastNum - lastNumBefore;
-        }else{
+        } else { // 그렇지 않으면 마지막 원소를 두 배한 값을 추가
             answer[num_list.length] = 2 * lastNum;
         }
+
+        // 결과 배열을 반환
         return answer;
     }
 }

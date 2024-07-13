@@ -29,3 +29,64 @@ i	arr[i]	stk
 -	-	[1, 2, 3]
 따라서 [1, 2, 3]을 return 합니다.
 
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] arr) {
+        
+        ArrayList<Integer> stk = new ArrayList<>();
+        
+        for(int i = 0; i < arr.length;){
+            //stk 빈 배열
+            if (stk.size() == 0){
+                stk.add(arr[i]);
+                i++;
+            }else if(stk.size() != 0 && stk.get(stk.size()-1)<arr[i]){
+                //stk에 원소가 있고, stk의 마지막 원소가 arr[i]보다 작으면 => AND
+                stk.add(arr[i]);
+                i++;
+            }else{
+                stk.remove(stk.size()-1);
+            }
+        }
+        
+        //ArrayList => int[]로 변환
+        int[] answer = new int[stk.size()];
+        for(int i = 0; i < stk.size(); i++){
+            answer[i] = stk.get(i);
+        }
+        
+        return answer;
+    }
+}
+
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] arr) {
+        
+        ArrayList<Integer> stk = new ArrayList<>();
+        
+        for(int i = 0; i < arr.length;){
+            //stk 빈 배열
+            if (stk.size() == 0){
+                stk.add(arr[i]);
+                i++;
+            }else if(stk.size() != 0 && stk.get(stk.size()-1)<arr[i]){
+                //stk에 원소가 있고, stk의 마지막 원소가 arr[i]보다 작으면 => AND
+                stk.add(arr[i]);
+                i++;
+            }else{
+                stk.remove(stk.size()-1);
+            }
+        }
+        
+        //ArrayList => int[]로 변환
+        int[] answer = new int[stk.size()];
+        for(int i = 0; i < stk.size(); i++){
+            answer[i] = stk.get(i);
+        }
+        
+        return answer;
+    }
+}

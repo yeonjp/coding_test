@@ -32,7 +32,7 @@ class Solution {
         List<Integer> list = new ArrayList<>();
         
         for(String str : intStrs){
-            StringA subStr = str.substring(s,s+l);
+            String subStr = str.substring(s,s+l);
             int num = Integer.parseInt(subStr);
             
             if(num > k){

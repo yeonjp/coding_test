@@ -24,3 +24,16 @@ i	my_strings[i]	parts[i]	부분 문자열
 각 부분 문자열을 순서대로 이어 붙인 문자열은 "programmers"입니다. 따라서 "programmers"를 return 합니다.
 
 solution
+class Solution {
+    public String solution(String[] my_strings, int[][] parts) {
+        String answer = "";
+        
+        for(int i = 0; i < my_strings.length; i++){
+            
+            String subStrings = my_strings[i];
+            
+            answer += subStrings.substring(parts[i][0], parts[i][1] + 1);
+        }
+        return answer;
+    }
+}

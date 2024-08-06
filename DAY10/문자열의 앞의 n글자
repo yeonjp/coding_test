@@ -18,3 +18,11 @@ my_string	n	result
 예제 2번의 my_string에서 앞의 5글자는 "He110"이므로 이 문자열을 return 합니다.
 
 solution
+class Solution {
+    public String solution(String my_string, int n) {
+        String answer = "";
+        
+        answer = my_string.substring(0,n);
+        return answer;
+    }
+}

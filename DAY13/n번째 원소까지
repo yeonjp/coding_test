@@ -27,3 +27,17 @@ class Solution {
         return answer;
     }
 }
+///////////////////////////////////////
+import java.util.*;
+
+class Solution {
+    public List<Integer> solution(int[] num_list, int n) {
+        List<Integer> answer = new ArrayList<>();  // ArrayList를 생성하여 초기화
+        
+        for(int i = 0; i < n; i++){
+            answer.add(num_list[i]);  // ArrayList에 num_list의 요소를 추가
+        }
+        
+        return answer;  // ArrayList를 반환
+    }
+}

@@ -18,3 +18,35 @@ myString	pat	result
 "ABAB"에서 "A"와 "B"를 서로 바꾸면 "BABA"입니다. 여기에는 부분문자열 "BABA"가 없기 때문에 0을 return 합니다.
 
 solution
+
+class Solution {
+    public int solution(String myString, String pat) {
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i = 0; i < myString.length(); i++){
+            char c = myString.charAt(i);
+            if(c == 'A'){
+                sb.append('B');
+            }else if(c == 'B'){
+                sb.append('A');
+            }
+        }
+        
+        if(sb.toString().contains(pat)){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+}
+
+-----------------------------------
+public class Solution {
+    public int solution(String myString, String pat) {
+        // myString의 "A"를 "a"로 바꾸고, "B"를 "A"로 바꾸고, "a"를 다시 "B"로 바꿈
+        myString = myString.replace("A", "a").replace("B", "A").replace("a", "B");
+        
+        // 변환된 myString이 pat를 포함하는지 확인
+        return myString.contains(pat) ? 1 : 0;
+    }
+}

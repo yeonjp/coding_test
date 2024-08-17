@@ -1,3 +1,4 @@
+아니 이 문제 뭐임?????????????????????????????????
 Description
 임의의 문자열이 주어졌을 때 문자 "a", "b", "c"를 구분자로 사용해 문자열을 나누고자 합니다.
 
@@ -28,3 +29,66 @@ myStr	result
 
 "a", "b", "c" 이외의 문자가 존재하지 않습니다. 따라서 저장할 문자열이 없습니다.
 따라서 ["EMPTY"]를 return 합니다.
+
+solution
+1번 해답
+import java.util.Arrays;
+
+class Solution {
+    public String[] solution(String myStr) {
+        // 주어진 문자열을 a,b,c로 나누고 빈 문자열을 제거함
+        String[] arr = Arrays.stream(myStr.split("[abc]+"))
+                              .filter(str -> !str.isEmpty()) //빈 문자열 필터링
+                              .toArray(String[]::new); // 필터링된 문자열을 배열로 변경
+
+        // 결과 배열이 비어있는 경우 EMPTY 반환
+        return arr.length == 0 ? new String[] { "EMPTY" } : arr;
+    }
+}
+
+2번 해답
+import java.util.Arrays;
+class Solution {
+    public String[] solution(String myStr) {
+        //a,b,c를 ,로 대체
+        myStr = myStr.replaceAll("[a|b|c]+", ",");
+        // 문자열이 ,로 시작하면 제거
+        myStr = myStr.charAt(0) == ',' ? myStr.substring(1) : myStr;
+        //만약 문자열이 비어있다면 EMPTY로 설정
+        myStr = myStr.equals("") ? "EMPTY" : myStr;
+
+        // ,를 기준으로 문자열을 분리하고 반
+        return myStr.split("[,]");
+    }
+}
+
+3번 해답
+import java.util.*;
+
+class Solution {
+    public String[] solution(String myStr) {
+        List<String> list = new ArrayList<>(); // 결과를 저장할 리스트 생성
+        StringBuffer sb = new StringBuffer(); // 부분 문자열을 임시로 저장할 버퍼 생성
+        
+        for(char c : myStr.toCharArray()){ // 문자열의 각 문자를 순회
+            if(c == 'a' || c == 'b' || c == 'c'){ // 만약 현재 문자가 'a', 'b', 'c'라면
+                if(!sb.toString().equals("")){ // 버퍼에 문자열이 있다면
+                    list.add(sb.toString()); // 리스트에 버퍼의 내용을 추가
+                    sb.delete(0, sb.length()); // 버퍼 초기화
+                }
+            }else{
+                sb.append(c); // 'a', 'b', 'c'가 아닌 문자는 버퍼에 추가
+            }
+        }
+        
+        if(!sb.toString().equals("")){ // 마지막으로 버퍼에 남은 문자열이 있으면 리스트에 추가
+            list.add(sb.toString());
+        }
+        
+        if(list.size() == 0){ // 리스트가 비어 있으면 "EMPTY" 반환
+            return new String[]{"EMPTY"};
+        }
+        
+        return list.stream().toArray(String[]::new); // 리스트를 배열로 변환하여 반환
+    }
+}

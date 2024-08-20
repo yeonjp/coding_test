@@ -112,3 +112,23 @@ class Solution {
 이렇게 풀면 완성이 됨...
 뭐가 다르지??
 이따 gpt한테 물어봐야겠다
+--------------------
+다른 사람 풀이
+import java.time.LocalDate;
+
+class Solution {
+
+    public int solution(int[] date1, int[] date2) {
+
+        LocalDate dateA = LocalDate.of(date1[0], date1[1], date1[2]);
+        LocalDate dateB = LocalDate.of(date2[0], date2[1], date2[2]);
+
+        if (dateA.isBefore(dateB)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+}
+
+날짜를 로컬데이트로 생각해서 짜보는 것도 생각하는게 좋겠다!

@@ -21,6 +21,7 @@ solution
     public String solution(String n_str) {
         
         int n = Integer.parseInt(n_str);
+        //이렇게 하면 숫자가 되니까 앞의 0은 삭제가 되는거임!
         String answer = String.valueOf(n);
         return answer;
     }

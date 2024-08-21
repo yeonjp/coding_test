@@ -33,3 +33,42 @@ n	result
 
 SOLUTION
 
+class Solution {
+    public int[][] solution(int n) {
+        int[][] answer = new int[n][n];
+        int val = 1;
+        int row = 0;
+        int col = 0;
+        int lastRow = n-1;
+        int lastCol = n-1;
+        
+        while(val <= n * n){
+            for(int i = col; i <= lastCol; i++){
+                answer[row][i] = val++;
+            }
+            
+            for(int i = row + 1; i <= lastRow; i++){
+                answer[i][lastCol] = val++;
+            }
+            
+            for(int i = lastCol -1 ; i >= col; i--){
+                answer[lastRow][i] = val++;
+            }
+            
+            for(int i = lastRow - 1; i > row; i--){
+                answer[i][col] = val++;
+            }
+            
+            row++;
+            col++;
+            lastRow--;
+            lastCol--;
+        }
+        return answer;
+    }
+}
+
+아니 이거 0단계 문제 아닌 것 같은데 뭐지???
+좀 더 공부해야겠다
+아니 이거 3점인게 말이 안되는데....
+
